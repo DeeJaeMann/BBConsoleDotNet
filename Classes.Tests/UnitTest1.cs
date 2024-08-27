@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace Classes.Tests
 {
 
-
+    [TestFixture]
     public class Tests
     {
         Store block_buster; 
@@ -15,10 +15,15 @@ namespace Classes.Tests
             block_buster.LoadData("inventory");
         }
 
+        /// <summary>
+        /// Asserting that the number of customers loaded from CSV is 6
+        /// </summary>
         [Test]
-        public void Test1()
+        public void Test001DataUnpackedFromCuvCustomers()
         {
-            Assert.Pass();
+            Assert.That(Customer.Customers, Has.Count.EqualTo(6));
         }
+
+
     }
 }
