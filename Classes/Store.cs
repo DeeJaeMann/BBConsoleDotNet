@@ -1,4 +1,4 @@
-﻿namespace BBConsoleDotNet.Classes
+﻿namespace Classes
 {
     public class Store
     {

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace BBConsoleDotNet.Classes.Tests
+namespace Classes.Tests
 {
 
 
