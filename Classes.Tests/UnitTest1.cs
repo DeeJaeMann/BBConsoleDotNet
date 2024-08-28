@@ -6,13 +6,13 @@ namespace Classes.Tests
     [TestFixture]
     public class Tests
     {
-        Store block_buster; 
+        Store blockBuster; 
         [SetUp]
         public void Setup()
         {
-            block_buster = new("Block Buster");
-            block_buster.LoadData("customers");
-            block_buster.LoadData("inventory");
+            blockBuster = new("Block Buster");
+            blockBuster.LoadData("customers");
+            blockBuster.LoadData("inventory");
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿namespace BBConsoleDotNet
+﻿using Classes;
+
+namespace BBConsoleDotNet
 {
     /// <summary>
     /// C# demonstration of Code Platoon OOP Assessment - Video Store
@@ -7,7 +9,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Store blockBuster = new("Block Buster");
+            blockBuster.LoadData("inventory");
+            blockBuster.LoadData("customers");
         }
     }
 }
