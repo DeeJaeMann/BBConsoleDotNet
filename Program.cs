@@ -10,7 +10,7 @@ namespace BBConsoleDotNet
         static void Main(string[] args)
         {
             Store blockBuster = new("Block Buster");
-            //blockBuster.LoadData("inventory");
+            blockBuster.LoadData("inventory");
             blockBuster.LoadData("customers");
 
             //Customer.CreateCustomer();

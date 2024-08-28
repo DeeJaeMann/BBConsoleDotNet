@@ -31,15 +31,9 @@ namespace Classes
             string _invFilePath = "../../../Data/inventory.csv";
             string _filePath;
 
-            // Short circuit to 'customers'
-            _filePath = _custFilePath;
-            /*
             // If the input is not 'customers' then assume 'inventory'
             if(fileName == "customers") _filePath = _custFilePath;
             else _filePath = _invFilePath;
-            */
-
-            Console.WriteLine($"File selected {_filePath}");
 
             // Specify the configuration for CsvReader
             // CultureInfo.InvariantCulture is the most portable for reading and writing  a file
@@ -52,16 +46,29 @@ namespace Classes
             using (StreamReader _reader = new(_filePath))
             using (CsvReader _csv = new(_reader, _csvConfig))
             {
-                // Register the class map to properly assign the csv data to the object
-                _csv.Context.RegisterClassMap<CustomerMap>();
-                var records = _csv.GetRecords<Customer>();
-
-                foreach (var record in records)
+                if(fileName == "customers")
                 {
-                    
-                    Customer.Customers.Add(record.id, record);
+                    // Register the class map to properly assign the csv data to the object
+                    _csv.Context.RegisterClassMap<CustomerMap>();
+                    var records = _csv.GetRecords<Customer>();
+
+                    foreach (var record in records)
+                    {
+                        Customer.Customers.Add(record.id, record);
+                    }
+
                 }
-                Console.WriteLine($"Customers {Customer.Customers.Count}");
+                else
+                {
+                    _csv.Context.RegisterClassMap<VideoMap>();
+                    var records = _csv.GetRecords<Video>();
+
+                    foreach (var record in records)
+                    {
+                        Video.Videos.Add(record.ID, record);
+                    }
+
+                }
             }
         }
 
@@ -80,6 +87,24 @@ namespace Classes
                 Map(m => m.firstName).Name("first_name");
                 Map(m => m.lastName).Name("last_name");
                 Map(m => m.currentVideoRentals).Name("current_video_rentals");
+            }
+        }
+
+        /// <summary>
+        /// Class to map inventory.csv into video objects
+        /// </summary>
+        public class VideoMap : ClassMap<Video>
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public VideoMap()
+            {
+                Map(m => m.ID).Name("id");
+                Map(m => m.Title).Name("title");
+                Map(m => m.Rating).Name("rating");
+                Map(m => m.releaseYear).Name("release_year");
+                Map(m => m.CopiesAvailable).Name("copies_available");
             }
         }
 
