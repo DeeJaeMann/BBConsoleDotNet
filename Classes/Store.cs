@@ -58,9 +58,10 @@ namespace Classes
 
                 foreach (var record in records)
                 {
-                    Console.WriteLine($"{record.id} {record.accountType} {record.firstName} {record.lastName} {record.currentVideoRentals}");
+                    
+                    Customer.Customers.Add(record.id, record);
                 }
-
+                Console.WriteLine($"Customers {Customer.Customers.Count}");
             }
         }
 
@@ -81,5 +82,6 @@ namespace Classes
                 Map(m => m.currentVideoRentals).Name("current_video_rentals");
             }
         }
+
     }
 }
