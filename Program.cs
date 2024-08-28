@@ -14,6 +14,8 @@ namespace BBConsoleDotNet
             blockBuster.LoadData("customers");
 
             //Customer.CreateCustomer();
+            //Customer customer = (Customer)Customer.GetCustomerByID();
+            //Console.WriteLine(customer.ID);
         }
     }
 }

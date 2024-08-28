@@ -48,22 +48,26 @@ namespace Classes
             {
                 if(fileName == "customers")
                 {
-                    // Register the class map to properly assign the csv data to the object
+                    // Customer class map for .csv data
                     _csv.Context.RegisterClassMap<CustomerMap>();
-                    var records = _csv.GetRecords<Customer>();
+                    IEnumerable<Customer> records = _csv.GetRecords<Customer>();
 
-                    foreach (var record in records)
+                    foreach (Customer record in records)
                     {
-                        Customer.Customers.Add(record.id, record);
+                        Customer.Customers.Add(record.ID, record);
                     }
-
+                    //Console.WriteLine($"Customers {Customer.Customers.Count}");
+                    //Customer testCustomer = (Customer) Customer.Customers[2];
+                    //string[] testVideos = testCustomer.CurrentVideoRentals;
+                    //Console.WriteLine($"First Customer Videos {testVideos[1]}");
                 }
                 else
                 {
+                    // Video class map for .csv data
                     _csv.Context.RegisterClassMap<VideoMap>();
-                    var records = _csv.GetRecords<Video>();
+                    IEnumerable<Video> records = _csv.GetRecords<Video>();
 
-                    foreach (var record in records)
+                    foreach (Video record in records)
                     {
                         Video.Videos.Add(record.ID, record);
                     }
@@ -82,11 +86,11 @@ namespace Classes
             /// </summary>
             public CustomerMap()
             {
-                Map(m => m.id).Name("id");
-                Map(m => m.accountType).Name("account_type");
+                Map(m => m.ID).Name("id");
+                Map(m => m.AccountType).Name("account_type");
                 Map(m => m.firstName).Name("first_name");
                 Map(m => m.lastName).Name("last_name");
-                Map(m => m.currentVideoRentals).Name("current_video_rentals");
+                Map(m => m.CurrentVideoRentals).Name("current_video_rentals");
             }
         }
 
