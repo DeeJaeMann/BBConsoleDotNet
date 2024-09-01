@@ -7,6 +7,7 @@ namespace Classes.Tests
     public class Tests
     {
         Store blockBuster; 
+
         [SetUp]
         public void Setup()
         {
