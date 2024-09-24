@@ -6,14 +6,14 @@ namespace Classes.Tests
     [TestFixture]
     public class Tests
     {
-        Store blockBuster; 
+        Store _blockBuster; 
 
         [SetUp]
         public void Setup()
         {
-            blockBuster = new("Block Buster");
-            blockBuster.LoadData("customers");
-            blockBuster.LoadData("inventory");
+            _blockBuster = new("Block Buster");
+            _blockBuster.LoadData("customers");
+            _blockBuster.LoadData("inventory");
         }
 
         [TearDown]
@@ -41,8 +41,28 @@ namespace Classes.Tests
             StringReader testID = new("6");
 
             Console.SetIn(testID);
-            Customer customer = (Customer)Customer.Customers[6];
-            Assert.That(Customer.GetCustomerByID(), Is.EqualTo(customer));
+            Customer _customer = (Customer)Customer.Customers[6];
+            Assert.That(Customer.GetCustomerByID(), Is.EqualTo(_customer));
+        }
+
+        /// <summary>
+        /// Asserting that a customer's current video rentals are updated correctly
+        /// </summary>
+        [Test]
+        public void Test003ReturnAVideo()
+        {
+            // Get customer with ID 2
+            object _customer;
+            if(Customer.Customers.TryGetValue(2, out _customer))
+            {
+                // Set the video to be returned by the customer
+                _customer.ReturnAVideo = "The Dark Knight";
+                string[] _expected = ["Inception", "The Prestige"];
+
+                //Assert.That(_customer.CurrentVideoRentals, Is.EqualTo())
+                CollectionAssert.AreEquivalent(_expected, _customer.CurrentVideoRentals);
+
+            }
         }
     }
 }
