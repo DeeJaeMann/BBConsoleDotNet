@@ -1,4 +1,10 @@
-# **Assessment 1: Object Oriented Programming + CSV Reading**
+# Code Platoon Video Store App
+
+This is a conversion from Python to C# of the below assessment
+The approach I used was to first recreate the tests in NUnit
+Then provide the functionality in C#
+
+## **Assessment 1: Object Oriented Programming + CSV Reading**
 
 ## **[Video Inventory Manager](https://drive.google.com/file/d/10WYWX2z_PODb-KfCgyv8VBJIFXx2EKfj/view?usp=drive_link)**
 
