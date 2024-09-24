@@ -52,17 +52,14 @@ namespace Classes.Tests
         public void Test003ReturnAVideo()
         {
             // Get customer with ID 2
-            object _customer;
-            if(Customer.Customers.TryGetValue(2, out _customer))
-            {
-                // Set the video to be returned by the customer
-                _customer.ReturnAVideo = "The Dark Knight";
-                string[] _expected = ["Inception", "The Prestige"];
+            Customer _customer = (Customer)Customer.Customers[2];
+            // Set the video to be returned by the customer
+            _customer.ReturnAVideo = "The Dark Knight";
+            string[] _expected = { "Inception", "The Prestige" };
 
-                //Assert.That(_customer.CurrentVideoRentals, Is.EqualTo())
-                CollectionAssert.AreEquivalent(_expected, _customer.CurrentVideoRentals);
+            //Assert.That(_customer.CurrentVideoRentals, Is.EqualTo())
+            CollectionAssert.AreEquivalent(_expected, _customer.CurrentVideoRentals);
 
-            }
         }
     }
 }
