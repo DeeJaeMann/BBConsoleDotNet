@@ -17,6 +17,9 @@
     <None Remove="Classes.Tests\bin\**" />
     <None Remove="Classes.Tests\obj\**" />
     <None Remove="Classes\obj\**" />
+    <Content Include="Data\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

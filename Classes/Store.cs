@@ -25,10 +25,13 @@ namespace Classes
         /// <param name="fileName">Filename to load: customers or inventory</param>
         public void LoadData(string fileName)
         {
-            // This is not the best method to locating the files
-            // But it works in test mode
-            string _custFilePath = "../../../Data/customers.csv";
-            string _invFilePath = "../../../Data/inventory.csv";
+            // This is a workaround that seems to work with both testing and debugging
+            // A <Content> entry has been added to the .csproj files to ensure that the
+            // Data directory is copied with the build/test
+            string _path = Directory.GetCurrentDirectory();
+
+            string _custFilePath = $"{_path}/Data/customers.csv";
+            string _invFilePath = $"{_path}/Data/inventory.csv";
             string _filePath;
 
             // If the input is not 'customers' then assume 'inventory'
